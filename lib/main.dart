@@ -14,10 +14,53 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ListViewSeparatedScreen(),
+      home: ExpandedScreen(),
     );
   }
 }
+
+class ExpandedScreen extends StatelessWidget {
+  const ExpandedScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(child: Container(
+          color: Colors.red,
+        )),
+        Expanded(child: Container(
+          color: Colors.orange,
+        )),
+        Expanded(child: Container(
+          color: Colors.grey,
+        )),
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
+        Expanded(child: Container(
+          color: Colors.purple,
+        )),
+        Expanded(child: Container(
+          color: Colors.blue,
+        )),
+        Expanded(child: Container(
+          color: Colors.indigo,
+        )),
+        Expanded(child: Container(
+          color: Colors.yellow,
+        )),
+        Expanded(child: Container(
+          color: Colors.amber,
+        )),
+      ],
+    );
+  }
+}
+
 
 class ListViewSeparatedScreen extends StatelessWidget {
 
