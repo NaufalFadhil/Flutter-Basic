@@ -14,10 +14,42 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NavigationFirstScreen(),
+      home: MediaQueryScreen(),
     );
   }
 }
+
+class MediaQueryScreen extends StatelessWidget {
+  const MediaQueryScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    Size screenSize = MediaQuery.of(context).size;
+    Orientation orientation = MediaQuery.of(context).orientation;
+
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            'Screen width: ${screenSize.width.toStringAsFixed(2)}',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            'Orientation: $orientation',
+            style: TextStyle(color: Colors.white, fontSize: 18),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 
 class NavigationFirstScreen extends StatelessWidget {
   final String message = 'Hello from First Screen!';
