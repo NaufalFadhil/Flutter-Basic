@@ -14,10 +14,65 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ExpandedFlexibleScreen(),
+      home: NavigationFirstScreen(),
     );
   }
 }
+
+class NavigationFirstScreen extends StatelessWidget {
+  final String message = 'Hello from First Screen!';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: Text('Pindah Screen'),
+          onPressed: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) {
+                return NavigationSecondScreen(message);
+              })
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class NavigationSecondScreen extends StatelessWidget {
+  final String message;
+
+  NavigationSecondScreen(this.message);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Second Screen'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(message),
+            OutlinedButton(
+              child: Text('Kembali'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 class ExpandedFlexibleScreen extends StatelessWidget {
   const ExpandedFlexibleScreen({Key? key}) : super(key: key);
